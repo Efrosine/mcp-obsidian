@@ -1,0 +1,23 @@
+services:
+  mcp-obsidian:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mcp-obsidian
+    ports:
+      - "3000:3000"
+    environment:
+      - OBSIDIAN_API_KEY=${OBSIDIAN_API_KEY}
+      - OBSIDIAN_HOST=${OBSIDIAN_HOST:-host.docker.internal}
+      - OBSIDIAN_PORT=${OBSIDIAN_PORT:-27124}
+      - OBSIDIAN_PROTOCOL=${OBSIDIAN_PROTOCOL:-https}
+      - HTTP_PORT=3000
+    networks:
+      - mcp-network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+networks:
+  mcp-network:
+    external: true
+    name: mcp-network  # Use the same network name as your existing n8n container

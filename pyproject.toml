@@ -2,7 +2,6 @@
 name = "mcp-obsidian"
 version = "0.2.1"
 description = "MCP server to work with Obsidian via the remote REST plugin"
-readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
  "mcp>=1.1.0",
